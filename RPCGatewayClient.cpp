@@ -26,7 +26,7 @@ int main(int argc, char ** argv) {
             struct timeval tv;
             tv.tv_sec = 30;
             tv.tv_usec = 0;
-	         setsockopt(nRPCClientSocket, SOL_SOCKET, SO_RCVTIMEO, (const char*) &tv, sizeof tv);
+            setsockopt(nRPCClientSocket, SOL_SOCKET, SO_RCVTIMEO, (const char*) &tv, sizeof tv);
 
             if (connect(nRPCClientSocket, (struct sockaddr *) &oRPCServiceSocket, sizeof(oRPCServiceSocket)) >= 0) {
                string sCommand = "";
@@ -39,7 +39,7 @@ int main(int argc, char ** argv) {
 
                if (send(nRPCClientSocket, sCommand.c_str(), strlen(sCommand.c_str()), 0) >= 0) {
                   char sRPCServiceSocketData[32768];
-		            string sRPCServiceSocketDataOutput = "";
+                  string sRPCServiceSocketDataOutput = "";
 
                   bool bRPCServiceSocketDataAllCommand = false;
                   for(;!bRPCServiceSocketDataAllCommand;) {
@@ -47,7 +47,7 @@ int main(int argc, char ** argv) {
                         int nRPCServiceSocketBytesRecieve = recv(nRPCClientSocket, sRPCServiceSocketData, 32768, 0);
                         sRPCServiceSocketDataOutput += string(sRPCServiceSocketData).substr(0, nRPCServiceSocketBytesRecieve);
                         
-			               if (sRPCServiceSocketDataOutput.find("<EOC>") != string::npos) {
+                        if (sRPCServiceSocketDataOutput.find("<EOC>") != string::npos) {
                            bRPCServiceSocketDataAllCommand = true;
                         }
                      } catch (exception& oException) {
