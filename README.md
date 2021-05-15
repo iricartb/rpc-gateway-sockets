@@ -1,3 +1,5 @@
+<img src="https://userscontent2.emaze.com/images/d1bd2b3b-28a7-4956-8525-f0c969801197/a661b1ca49e869bd79d7931a4968d146.jpg" width="100%" />
+
 <h1>RPC Gateway Sockets</h1>
 
 Client server application to execute commands remotely.
